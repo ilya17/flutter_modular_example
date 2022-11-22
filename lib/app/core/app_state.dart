@@ -1,5 +1,5 @@
 import 'package:rx_notifier/rx_notifier.dart';
 
 class AppState {
-  final isDarkMode = RxNotifier<bool>(false);
+  final isDarkMode = RxNotifier<bool>(true);
 }
