@@ -7,8 +7,6 @@ import 'package:flutter_first_app/features/second_page/second_page_widget.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
-
   @override
   State<StatefulWidget> createState() => _MainPageState();
 }
@@ -48,7 +46,9 @@ class _MainPageState extends ModularState<MainPage, MainController> {
         middle: Text('Just Cupertino'),
         trailing: CupertinoButton(
             padding: EdgeInsets.only(bottom: 0.0, right: 10.0),
-            onPressed: () => controller.changeThemeMode(),
+            onPressed: () => {
+              controller.changeThemeMode(),
+            },
             child: Icon(controller.isDarkMode
                 ? CupertinoIcons.sun_max_fill
                 : CupertinoIcons.cloud_moon)));
