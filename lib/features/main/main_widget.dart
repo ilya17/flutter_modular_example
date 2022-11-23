@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_first_app/features/main/main_controller.dart';
 import 'package:flutter_first_app/features/second_page/second_page_widget.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:rx_notifier/rx_notifier.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -45,13 +46,15 @@ class _MainPageState extends ModularState<MainPage, MainController> {
         ),
         middle: Text('Just Cupertino'),
         trailing: CupertinoButton(
-            padding: EdgeInsets.only(bottom: 0.0, right: 10.0),
-            onPressed: () => {
-              controller.changeThemeMode(),
-            },
-            child: Icon(controller.isDarkMode
-                ? CupertinoIcons.sun_max_fill
-                : CupertinoIcons.cloud_moon)));
+          padding: EdgeInsets.only(bottom: 0.0, right: 10.0),
+          onPressed: () => {
+            controller.changeThemeMode(),
+          },
+          child: RxBuilder(
+              builder: (_) => Icon(controller.isDarkMode
+                  ? CupertinoIcons.sun_max_fill
+                  : CupertinoIcons.cloud_moon)),
+        ));
   }
 
   Widget isLoadingWidget() {
